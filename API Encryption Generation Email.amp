@@ -1,0 +1,30 @@
+%%[
+
+/* RETRIEVE API CREDENTIALS */
+SET @clientID = "35r8yqwz2622b0kyr4omtxw2"
+SET @Client_Secret = "Bn12JP4yC5TaLDUPPMJ2xaYX"
+
+/* SET SFMC KEYS (USING EXTERNAL KEYS) */
+SET @sym = "35cffd94-38c3-4b58-a57d-1080f9785ca6"
+SET @IV = "1afc056b-9f6b-4e6c-b76b-d1d851c52d64"
+SET @salt = "5c797c66-7b62-4071-88eb-e530b2a415a3"
+
+/* ENCRYPT DECRYPT CLIENT ID */
+SET @enc_ClientID = EncryptSymmetric(@clientID, 'AES', @sym, @null, @salt, @null, @IV, @null)
+SET @dec_ClientID = DecryptSymmetric(@enc_ClientID, 'AES', @sym, @null, @salt, @null, @IV, @null)
+
+SET @enc_Client_Secret = EncryptSymmetric(@Client_Secret, 'AES', @sym, @null, @salt, @null, @IV, @null)
+SET @dec_Client_Secret = DecryptSymmetric(@enc_Client_Secret, 'AES', @sym, @null, @salt, @null, @IV, @null)
+
+]%%
+
+<b>ClientID:</b> %%=v(@clientID)=%% <br><br>
+<b>enc_ClientID:</b> %%=v(@enc_ClientID)=%% <br><br>
+<b>dec_ClientID:</b> %%=v(@dec_ClientID)=%% <br><br>
+
+<br>
+<br>
+
+<b>Client_Secret:</b> %%=v(@Client_Secret)=%% <br><br>
+<b>enc_Client_Secret:</b> %%=v(@enc_Client_Secret)=%% <br><br>
+<b>dec_Client_Secret:</b> %%=v(@dec_Client_Secret)=%% <br><br>
