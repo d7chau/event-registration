@@ -34,7 +34,7 @@ IF @localDate < @expiryDate THEN
       SET @auth_URL = Lookup("Enc_API_Credentials", "Auth_Base_URI", "Package_Name", "API Test Playground")
       SET @rest_URL = Lookup("Enc_API_Credentials", "REST_Base_URI", "Package_Name", "API Test Playground")
 
-      /* SET SFMC KEYS */
+      /* SET SFMC KEYS (BASED ON EXTERNAL KEY VALUES) */
       SET @sym = "35cffd94-38c3-4b58-a57d-1080f9785ca6"
       SET @IV = "1afc056b-9f6b-4e6c-b76b-d1d851c52d64"
       SET @salt="5c797c66-7b62-4071-88eb-e530b2a415a3"
