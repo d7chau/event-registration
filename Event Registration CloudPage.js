@@ -37,7 +37,7 @@ IF @localDate < @expiryDate THEN
       /* SET SFMC KEYS (BASED ON EXTERNAL KEY VALUES) */
       SET @sym = "35cffd94-38c3-4b58-a57d-1080f9785ca6"
       SET @IV = "1afc056b-9f6b-4e6c-b76b-d1d851c52d64"
-      SET @salt="5c797c66-7b62-4071-88eb-e530b2a415a3"
+      SET @salt = "5c797c66-7b62-4071-88eb-e530b2a415a3"
 
       /* DECRYPT CREDENTIALS */
       SET @dec_ClientID = DecryptSymmetric(@enc_ClientID, 'AES', @sym, @null, @salt, @null, @IV, @null)
