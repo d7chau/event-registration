@@ -98,7 +98,7 @@ IF @localDate < @expiryDate THEN
     var responseJSON = Platform.Function.ParseJSON(result.Response[0]);
     var apiToken = responseJSON.access_token;
 
-    /* For debug/testing, apiToken is reset to empty string - comment this out for production */
+    /* Overwrites the token with an empty string to disable the journey trigger - for debugging/testing only */ 
     // var apiToken = '';
 
     /* If access token received, proceed to trigger the Journey API */
