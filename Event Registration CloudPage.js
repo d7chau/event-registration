@@ -155,7 +155,7 @@ IF @localDate < @expiryDate THEN
     else{
       /* Insert failure log entry with error message */
       var errorLog = Platform.Function.InsertDE("EventRegistrationLog",["LogID","Email","Status","ErrorMessage","Timestamp"],[logID, email, "FAIL", errorMessage, localDate]);
-      /* Set AMPscript variable for error code to use later */
+      /* Pass the error code from SSJS to AMPscript for use later */
       Variable.SetValue("@errorCode",errorCode);
     };
 
