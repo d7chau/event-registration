@@ -132,7 +132,7 @@ IF @localDate < @expiryDate THEN
       /* Make HTTP POST request to trigger journey event */
       var journey_result = HTTP.Post(journey_url, contentType, journey_payload_String, journey_headerNames, journey_headerValues);
 
-      /* Capture HTTP status code from the response */
+      /* Capture HTTP status code from the response (Status Code 201 indicates the POST request was successful and a resource was created) */
       var journey_trigger_status = journey_result.StatusCode;
 
       /* If journey trigger was unsuccessful, set error code and message */
