@@ -122,7 +122,7 @@ IF @localDate < @expiryDate THEN
         }
       };
 
-      /* Convert payload object to JSON string */
+      /* Convert JavaScript object (payload) into JSON string */
       var journey_payload_String = Stringify(journey_payload);
 
       /* Set Authorization header with Bearer token */
