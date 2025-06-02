@@ -99,7 +99,7 @@ IF @localDate < @expiryDate THEN
     var apiToken = responseJSON.access_token;
 
     /* For debug/testing, apiToken is reset to empty string - comment this out for production */
-    var apiToken = '';
+    // var apiToken = '';
 
     /* If access token received, proceed to trigger the Journey API */
     if(apiToken){
