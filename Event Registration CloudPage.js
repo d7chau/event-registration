@@ -125,7 +125,7 @@ IF @localDate < @expiryDate THEN
       /* Convert JavaScript object (payload) into JSON string */
       var journey_payload_String = Stringify(journey_payload);
 
-      /* Set Authorization header with Bearer token */
+      /* Set Authorization header and Bearer token */
       var journey_headerNames = ["Authorization"];
       var journey_headerValues = ["Bearer " + apiToken];
 
