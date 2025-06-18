@@ -26,7 +26,7 @@ IF @localDate < @expiryDate THEN
 
       /* ------- CHECK IF THE EMAIL HAS ALREADY BEEN REGISTERED ------- */
       SET @rows = LookupRows("EventRegistrationDE", "Email", @email)
-      SET @rowCount = rowcount(@rows)
+      SET @rowCount = RowCount(@rows)
 
       /* Proceed only if no prior registration found for this email */
       IF @rowCount == 0 THEN
