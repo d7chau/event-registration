@@ -102,7 +102,7 @@ IF @localDate < @expiryDate THEN
       /* Construct payload for triggering Journey API event */
       var journey_payload = {
         "ContactKey": email,
-        "EventDefinitionKey":"APIEvent-15c8ed16-6f89-450d-4288-b106aabcfc29",
+        "EventDefinitionKey":"APIEvent-15c8ed16-6f89-450d-4288-b106aabcfc29", // EventDefinitionKey obtained from Journey's API Event Entry Source
         "Data": {
           "FirstName":firstName,
           "LastName":lastName,
