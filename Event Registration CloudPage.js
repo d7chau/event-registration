@@ -80,7 +80,7 @@ IF @localDate < @expiryDate THEN
     /* Build the payload JSON string for OAuth client credentials grant */
     var payload = '{"grant_type": "client_credentials","client_id": "' + dec_ClientID + '","client_secret": "' + dec_Client_Secret + '"}';
 
-    /* Initialize empty arrays for headers */
+    /* Initialize empty arrays for headers - no additional headers needed beyond content type */
     var headerNames = [];
     var headerValues = [];
 
