@@ -212,7 +212,8 @@ ENDIF
     <h2>Register for the Workshop</h2>
 
     <!-- ------- REGISTRATION FORM ------- -->
-    <form action="%%=RequestParameter('PAGEURL')=%%" method="POST">
+    <!-- Submit form to the same CloudPage using POST (via request body, not URL) for secure handling -->
+    <form action="%%=RequestParameter('PAGEURL')=%%" method="POST"> 
       <input type="hidden" id="action" name="action" value="submit">
 
       <!-- Input fields -->
