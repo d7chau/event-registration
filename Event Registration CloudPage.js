@@ -74,8 +74,8 @@ IF @localDate < @expiryDate THEN
     var logID = Platform.Function.GUID();
 
     /* ------- CONSTRUCT AUTH TOKEN REQUEST URL ------- */
-    var url = auth_URL + "/v2/token";
-    var contentType = "application/json";
+    var url = auth_URL + "/v2/token"; // Full URL for requesting OAuth access token (base Auth URL + token endpoint)
+    var contentType = "application/json"; // Specify request payload format as JSON
 
     /* Build the payload JSON string for OAuth client credentials grant */
     var payload = '{"grant_type": "client_credentials","client_id": "' + dec_ClientID + '","client_secret": "' + dec_Client_Secret + '"}';
