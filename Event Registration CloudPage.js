@@ -97,7 +97,7 @@ IF @localDate < @expiryDate THEN
     if(apiToken){
 
       /* ------- JOURNEY EVENT TRIGGER URL ------- */
-      var journey_url = rest_URL + "/interaction/v1/events";
+      var journey_url = rest_URL + "/interaction/v1/events"; // Full URL for triggering Journey API event (base REST URL + event endpoint)
 
       /* Construct payload for triggering Journey API event */
       var journey_payload = {
