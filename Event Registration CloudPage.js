@@ -99,7 +99,7 @@ IF @localDate < @expiryDate THEN
       /* ------- JOURNEY EVENT TRIGGER URL ------- */
       var journey_url = rest_URL + "/interaction/v1/events"; // Full URL for triggering Journey API event (base REST URL + event endpoint)
 
-      /* Construct payload for triggering Journey API event */
+      /* Construct JavaScript object as payload for triggering Journey API event */
       var journey_payload = {
         "ContactKey": email,
         "EventDefinitionKey":"APIEvent-15c8ed16-6f89-450d-4288-b106aabcfc29", // EventDefinitionKey obtained from Journey's API Event Entry Source
@@ -114,7 +114,7 @@ IF @localDate < @expiryDate THEN
         }
       };
 
-      /* Convert JavaScript object (payload) into JSON string */
+      /* Convert JavaScript object payload to a JSON-formatted string */
       var journey_payload_String = Stringify(journey_payload);
 
       /* Set Authorization header and Bearer token */
