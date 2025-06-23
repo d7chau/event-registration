@@ -190,63 +190,155 @@ ENDIF
 
 ]%%
 
-<!-- ------- FORM CONTAINER ------- -->
-<div class="form-container">
-  <!-- ------- STATUS MESSAGES ------- -->
-  %%[IF @action == 'submit' THEN]%%
-    %%[IF @formSubStatus == 'SUCCESS' THEN]%%
+<!--------- DATA OUTPUT (FOR TESTING ONLY) --------->
+<b>firstName:
+</b>%%=v(@firstName)=%%<br>
+<b>lastName:
+</b>%%=v(@lastName)=%%<br>
+<b>email:
+</b>%%=v(@email)=%%<br>
+<b>workshop:
+</b>%%=v(@workshop)=%%<br>
+<b>consent:
+</b>%%=v(@consent)=%%<br>
+<b>action:
+</b>%%=v(@action)=%%<br>
+  
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Event Registration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        padding: 20px;
+      }
+      .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+      .message-box {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .success-message {
+        color: #2e7d32;
+      }
+      .error-message {
+        color: #c62828;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333333;
+      }
+      label {
+        display: block;
+        margin: 15px 0 5px;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .checkbox-group input[type="checkbox"] {
+        margin-right: 10px;
+      }
+      button {
+        background-color: #0070d2;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        margin-top: 20px;
+        width: 100%;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #005bb5;
+      }
+    </style>
+  </head>
+  <body>
+    <!--------- FORM CONTAINER --------->
+    <div class="form-container">
+      <!--------- STATUS MESSAGES --------->
+      %%[IF @action == 'submit' THEN]%%
+      %%[IF @forSubStatus == 'SUCCESS' THEN]%%
       <!-- Display success message if registration succeeded -->
       <div class="message-box success-message">
         ✅ Your registration was successful!
       </div>
-    %%[ELSE]%%
+      %%[ELSE]%%
       <!-- Display error message if registration failed -->
       <div class="message-box error-message">
         ❌ %%=IIF(NOT EMPTY(@errorMessage), @errorMessage, "An error has occured. Please contact support team")=%%
       </div>
-    %%[ENDIF]%%
-  %%[ENDIF]%%
+      %%[ENDIF]%%
+      %%[ENDIF]%%
 
-  %%[IF @hasExpired == 'FALSE' THEN]%%
-    <!-- ------- FORM HEADER ------- -->
-    <h2>Register for the Workshop</h2>
+      %%[IF @hasExpired == 'FALSE' THEN]%%
+      <!--------- FORM HEADER --------->
+      <h2>Register for the Workshop</h2>
 
-    <!-- ------- REGISTRATION FORM ------- -->
-    <!-- Submit the form to the same CloudPage using POST (via request body, not URL) to securely process the data on the same page -->
-    <form action="%%=RequestParameter('PAGEURL')=%%" method="POST"> 
-      <input type="hidden" id="action" name="action" value="submit">
+      <!--------- REGISTRATION FORM --------->
+      <!-- Submit the form to the same CloudPage using POST (via request body, not URL) to securely process the data on the same page -->
+      <form action="%%=RequestParameter('PAGEURL')=%%" method="POST">
+        <input type="hidden" id="action" name="action" value="submit">
 
-      <!-- Input fields -->
-      <label for="firstName">First Name</label>
-      <input type="text" name="firstName" id="firstName" required>
+        <!-- Input fields -->
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName" required>
 
-      <label for="lastName">Last Name</label>
-      <input type="text" name="lastName" id="lastName" required>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" required>
 
-      <label for="email">Email Address</label>
-      <input type="email" name="email" id="email" required>
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" required>
 
-      <label for="workshop">Select Workshop</label>
-      <select name="workshop" id="workshop" required>
-        <option value="">-- Select --</option>
-        <option value="Marketing Automation Basics">Marketing Automation Basics</option>
-        <option value="Advanced Journey Builder">Advanced Journey Builder</option>
-        <option value="Data Extensions Mastery">Data Extensions Mastery</option>
-      </select>
+        <label for="workshop">Select Workshop</label>
+        <select name="workshop" id="workshop" required>
+          <option value="">-- Select --</option>
+          <option value="Marketing Automation Basics">Marketing Automation Basics</option>
+          <option value="Advanced Journey Builder">Advanced Journey Builder</option>
+          <option value="Data Extensions Mastery">Data Extensions Mastery</option>
+        </select>
 
-      <div class="checkbox-group">
-        <input type="checkbox" name="consent" id="consent" value="TRUE" required>
-        <label for="consent">I agree to receive event emails and updates</label>
+        <div class="checkbox-group">
+          <input type="checkbox" name="consent" id="consent" value="TRUE" required>
+          <label for="consent">I agree to receive event emails and updates</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit">Submit Registration</button>
+      </form>
+      %%[ELSE]%%
+      <!--------- EXPIRY MESSAGE --------->
+      <div class="message-box error-message">
+        ❌ Sorry, you no longer can register for these events.
       </div>
-
-      <!-- Submit button -->
-      <button type="submit">Submit Registration</button>
-    </form>
-
-  %%[ELSE]%%
-    <!-- ------- EXPIRY MESSAGE ------- -->
-    <div class="message-box error-message">
-      ❌ Sorry, you no longer can register for these events.
+      %%[ENDIF]%%
     </div>
-  %%[ENDIF]%%
-</div>
+  </body>
+</html>
