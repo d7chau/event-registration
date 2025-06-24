@@ -285,17 +285,17 @@ ENDIF
     <div class="form-container">
       <!--------- STATUS MESSAGES --------->
       %%[IF @action == 'submit' THEN]%%
-      %%[IF @forSubStatus == 'SUCCESS' THEN]%%
-      <!-- Display success message if registration succeeded -->
-      <div class="message-box success-message">
-        ✅ Your registration was successful!
-      </div>
-      %%[ELSE]%%
-      <!-- Display error message if registration failed -->
-      <div class="message-box error-message">
-        ❌ %%=IIF(NOT EMPTY(@errorMessage), @errorMessage, "An error has occured. Please contact support team")=%%
-      </div>
-      %%[ENDIF]%%
+        %%[IF @forSubStatus == 'SUCCESS' THEN]%%
+          <!-- Display success message if registration succeeded -->
+          <div class="message-box success-message">
+            ✅ Your registration was successful!
+          </div>
+        %%[ELSE]%%
+          <!-- Display error message if registration failed -->
+          <div class="message-box error-message">
+            ❌ %%=IIF(NOT EMPTY(@errorMessage), @errorMessage, "An error has occured. Please contact support team")=%%
+          </div>
+        %%[ENDIF]%%
       %%[ENDIF]%%
 
       %%[IF @hasExpired == 'FALSE' THEN]%%
