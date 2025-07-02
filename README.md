@@ -6,7 +6,7 @@
 
 An event registration CloudPage for 'EventFlow' built in Salesforce Marketing Cloud using SSJS, AMPscript, HTML, and CSS, which utilizes the REST API to trigger a Welcome Journey upon successful form submission.
 
-## SSJS Features
+## SSJS & AMPscript Features
 
 * Conditional Logic
 
